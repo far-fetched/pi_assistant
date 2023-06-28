@@ -1,0 +1,19 @@
+<div id="<%= dom_id action %>" class="flex gap-4 my-5">
+  <p>
+    <strong class="block font-medium mb-1">Service:</strong>
+    <%= action.service %>
+  </p>
+
+  <p>
+    <strong class="block font-medium mb-1">Method:</strong>
+    <%= action.params["method"] %>
+  </p>
+
+  <%= button_to action_path(action), method: :delete, class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" do %>
+    remove
+  <% end %>
+
+  <%= button_to "/actions/#{action.id}/execute", method: :get, class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" do %>
+    execute
+  <% end %>
+</div>

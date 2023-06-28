@@ -1,0 +1,17 @@
+<%= turbo_frame_tag "commands" do %>
+  <%= form_with(url: gpio_index_path, method: :post, class: "contents") do |form| %>
+    <div class="my-5">
+      <%= form.label :command %>
+      <%= form.select :command, @commands, { include_blank: "choose command..." }, { class: "rounded-md w-full mt-2" } %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :gpio, "gpio number" %>
+      <%= form.number_field :gpio_number, { class: "rounded-md w-full mt-2" } %>
+    </div>
+
+    <div class="inline">
+      <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    </div>
+  <% end %>
+<% end %>
