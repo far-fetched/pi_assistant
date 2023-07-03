@@ -4,25 +4,24 @@ class GpioService
   include Singleton
 
   def initialize
-    require 'rpi_gpio'
-    RPi::GPIO.set_numbering :bcm
+    system "python3 lib/scripts/test_is_pi_platform.py", exception: true
     @can_use = true
-  rescue LoadError
-    puts 'cannot load rpi_gpio module (not pi platform?)'
+  rescue => e
+    puts 'cannot load gpio module (not pi platform?)'
   end
 
-  def on(gpio_number)
+  def on(attrs)
+    gpio_number = attrs['gpio_number']
     fake_call('on', gpio_number) && return unless @can_use
 
-    RPi::GPIO.setup gpio_number, as: :output
-    RPi::GPIO.set_high gpio_number
+    system "python3 lib/scripts/on.py --pin #{gpio_number}"
   end
 
   def off(gpio_number)
+    gpio_number = attrs['gpio_number']
     fake_call('off', gpio_number) && return unless @can_use
 
-    RPi::GPIO.setup gpio_number, as: :output
-    RPi::GPIO.set_low gpio_number
+    system "python3 lib/scripts/off.py --pin #{gpio_number}"
   end
 
   def swap(attrs)
