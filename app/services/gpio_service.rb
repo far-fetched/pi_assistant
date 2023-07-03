@@ -17,7 +17,7 @@ class GpioService
     system "python3 lib/scripts/on.py --pin #{gpio_number}"
   end
 
-  def off(gpio_number)
+  def off(attrs)
     gpio_number = attrs['gpio_number']
     fake_call('off', gpio_number) && return unless @can_use
 
