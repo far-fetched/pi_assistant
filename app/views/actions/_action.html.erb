@@ -16,4 +16,9 @@
   <%= button_to "/actions/#{action.id}/execute", method: :get, class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" do %>
     execute
   <% end %>
+
+
+  <%= button_to action_scheduler_index_path, method: :post, params: { action_id: action.id }, class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" do %>
+    schedule
+  <% end %>
 </div>

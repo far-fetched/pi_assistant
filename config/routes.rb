@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :actions, only: [:new, :destroy]
 
   resources :gpio, only: [:new, :create]
+  resources :action_scheduler, only: [:create]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

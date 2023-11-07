@@ -1,12 +1,6 @@
 class ActionsController < ApplicationController
   def execute
-    a = Action.find(permit_params[:id])
-
-    service_name = "#{a.service}Service"
-    service = service_name.classify.safe_constantize
-    method = a.params['method']
-    attrs = a.params['attrs']
-    service.instance.send(method, attrs)
+    ActionService.new.execute(permit_params[:id])
     redirect_to new_action_path
   end
 
