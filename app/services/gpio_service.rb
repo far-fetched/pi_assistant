@@ -41,8 +41,8 @@ class GpioService
 
   def rising_edge(attrs)
     fake_call('rising_edge', attrs) && return unless @can_use
-    gpio_number = attrs['gpio_number']
-     
+    repeat_number = attrs['repeat_number']
+    system "python3 lib/scripts/motor.py --step #{repeat_number}"
   end
 
   def falling_edge
