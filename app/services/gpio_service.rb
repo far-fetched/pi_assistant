@@ -4,9 +4,9 @@ class GpioService
   include Singleton
 
   def initialize
-    system "python3 lib/scripts/test_is_pi_platform.py", exception: true
+    system 'python3 lib/scripts/test_is_pi_platform.py', exception: true
     @can_use = true
-  rescue => e
+  rescue StandardError => e
     puts 'cannot load gpio module (not pi platform?)'
   end
 
@@ -37,6 +37,16 @@ class GpioService
       on gpio_number
     end
     pin.save!
+  end
+
+  def rising_edge(attrs)
+    fake_call('rising_edge', attrs) && return unless @can_use
+    gpio_number = attrs['gpio_number']
+     
+  end
+
+  def falling_edge
+
   end
 
   private

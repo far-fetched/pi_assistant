@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_26_105746) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_23_124338) do
   create_table "actions", force: :cascade do |t|
     t.string "service"
     t.json "params"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "repeat_number"
   end
 
   create_table "pins", force: :cascade do |t|

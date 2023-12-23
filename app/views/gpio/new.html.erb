@@ -6,7 +6,12 @@
     </div>
 
     <div class="my-5">
-      <%= form.label :gpio, "gpio number" %>
+      <%= form.label :repeat_number, "repeat times:" %>
+      <%= form.number_field :repeat_number, { class: "rounded-md w-full mt-2" } %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :gpio, "gpio number:" %>
       <%= form.number_field :gpio_number, { class: "rounded-md w-full mt-2" } %>
     </div>
 
