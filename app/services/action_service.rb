@@ -13,4 +13,9 @@ class ActionService
     wait = action.timer.value.to_i
     ActionSchedulerJob.set(wait: wait.seconds).perform_later(action.id)
   end
+
+  def execute_series(id)
+    s = Series.find(id)
+    s.actions.each { |a| execute(a.id) }
+  end
 end
