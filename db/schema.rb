@@ -10,18 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_23_124338) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_25_185749) do
   create_table "actions", force: :cascade do |t|
     t.string "service"
     t.json "params"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "repeat_number"
+    t.integer "series_id"
+    t.index ["series_id"], name: "index_actions_on_series_id"
   end
 
   create_table "pins", force: :cascade do |t|
     t.integer "gpio"
     t.integer "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "series", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,5 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_23_124338) do
     t.index ["action_id"], name: "index_timers_on_action_id"
   end
 
+  add_foreign_key "actions", "series"
   add_foreign_key "timers", "actions"
 end
