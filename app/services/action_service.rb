@@ -18,4 +18,10 @@ class ActionService
     s = Series.find(id)
     s.actions.each { |a| execute(a.id) }
   end
+
+  def schedule_series_as_interval(id)
+    series = Series.find(id)
+    wait = series.timer.value.to_i
+    SeriesSchedulerJob.set(wait: wait.seconds).perform_later(series.id)
+  end
 end
