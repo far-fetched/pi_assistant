@@ -5,7 +5,16 @@ class ActionService
     service = service_name.classify.safe_constantize
     method = a.params['method']
     attrs = a.params['attrs']
-    service.instance.send(method, attrs)
+
+    repeat = attrs['repeat_number']
+    if repeat
+      Array(0...repeat).each do
+        service.instance.send(method, attrs)
+        sleep(0.005.seconds)
+      end
+    else
+      service.instance.send(method, attrs)
+    end
   end
 
   def schedule_as_interval(id)
