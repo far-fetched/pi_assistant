@@ -1,6 +1,6 @@
 class GpioController < ApplicationController
   def new
-    @commands = %w(on off swap)
+    @commands = %w(on off swap rising_edge)
   end
 
   def create

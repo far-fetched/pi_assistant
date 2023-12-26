@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_25_185749) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_26_125028) do
   create_table "actions", force: :cascade do |t|
     t.string "service"
     t.json "params"
@@ -35,12 +35,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_25_185749) do
 
   create_table "timers", force: :cascade do |t|
     t.string "value"
-    t.integer "action_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["action_id"], name: "index_timers_on_action_id"
+    t.string "schedulable_type"
+    t.integer "schedulable_id"
+    t.index ["schedulable_type", "schedulable_id"], name: "index_timers_on_schedulable"
   end
 
   add_foreign_key "actions", "series"
-  add_foreign_key "timers", "actions"
 end

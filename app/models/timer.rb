@@ -1,5 +1,5 @@
 class Timer < ApplicationRecord
-  belongs_to :action
+  belongs_to :schedulable, polymorphic: true
 
   def interval?
 
