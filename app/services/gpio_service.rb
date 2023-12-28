@@ -47,12 +47,8 @@ class GpioService
     end
 
     gpio_number = attrs['gpio_number']
-    off attrs
-    #sleep(0.005.seconds)
-    on attrs
-
-    #repeat_number = attrs['repeat_number']
-    #system "python3 lib/scripts/motor.py --step #{repeat_number}"
+    repeat_number = attrs['repeat_number'] || 1
+    system "python3 lib/scripts/rising_edge.py --pin #{gpio_number} --steps #{repeat_number}"
   end
 
   def falling_edge
