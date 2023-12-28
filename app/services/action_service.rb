@@ -10,7 +10,7 @@ class ActionService
     if repeat
       Array(0...repeat).each do
         service.instance.send(method, attrs)
-        sleep(0.005.seconds)
+        #sleep(0.005.seconds)
       end
     else
       service.instance.send(method, attrs)

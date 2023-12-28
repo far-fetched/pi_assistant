@@ -47,9 +47,9 @@ class GpioService
     end
 
     gpio_number = attrs['gpio_number']
-    off gpio_number
-    sleep(0.005.seconds)
-    on gpio_number
+    off attrs
+    #sleep(0.005.seconds)
+    on attrs
 
     #repeat_number = attrs['repeat_number']
     #system "python3 lib/scripts/motor.py --step #{repeat_number}"
