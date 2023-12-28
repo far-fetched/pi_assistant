@@ -48,7 +48,7 @@ class GpioService
 
     gpio_number = attrs['gpio_number']
     off attrs
-    #sleep(0.005.seconds)
+    sleep(0.005.seconds)
     on attrs
 
     #repeat_number = attrs['repeat_number']

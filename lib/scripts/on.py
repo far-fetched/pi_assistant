@@ -9,5 +9,7 @@ args = parser.parse_args()
 pin = args.pin
 
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 GPIO.setup(pin, GPIO.OUT)
 GPIO.output(pin, True)
+GPIO.cleanup()
